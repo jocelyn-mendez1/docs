@@ -1045,7 +1045,6 @@ following fields:
 
 .. data:: replSetGetStatus.initialSyncStatus
 
-   .. versionadded:: 3.4
 
    A document provides information on the progress and status of
    :ref:`initial sync <replica-set-initial-sync>` on this member.
@@ -1054,41 +1053,32 @@ following fields:
 
    .. data:: replSetGetStatus.initialSyncStatus.failedInitialSyncAttempts
 
-      .. versionadded:: 3.4
 
       The number of times the :ref:`initial sync
       <replica-set-initial-sync>` failed and had to restart on this
       member.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.maxFailedInitialSyncAttempts
 
-      .. versionadded:: 3.4
 
       The maximum number of times the :ref:`initial sync
       <replica-set-initial-sync>` can restart on this member before
       the member shuts down.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncStart
 
-      .. versionadded:: 3.4
 
       The start timestamp of the :ref:`initial sync
       <replica-set-initial-sync>` for this member.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncEnd
 
-      .. versionadded:: 3.4
 
       The end timestamp of the :ref:`initial sync
       <replica-set-initial-sync>` for this member.
-
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncElapsedMillis
 
@@ -1098,11 +1088,9 @@ following fields:
       :data:`~replSetGetStatus.initialSyncStatus.initialSyncStart` and
       :data:`~replSetGetStatus.initialSyncStatus.initialSyncEnd`.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncAttempts
 
-      .. versionadded:: 3.4
 
       Array of documents where each document corresponds to a single
       :ref:`initial sync <replica-set-initial-sync>` attempt. For example:
@@ -1161,11 +1149,9 @@ following fields:
       See also
       :data:`~replSetGetStatus.initialSyncStatus.failedInitialSyncAttempts`.
             
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.appliedOps
 
-      .. versionadded:: 3.4
 
       The number of ops that occurred after the :ref:`initial sync
       <replica-set-initial-sync>` started and were applied after cloning
@@ -1175,11 +1161,9 @@ following fields:
       to update its data set to reflect the current state of the
       replica set.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncOplogStart
 
-      .. versionadded:: 3.4
 
       The start timestamp of the oplog application stage of the
       :ref:`initial sync <replica-set-initial-sync>` where the
@@ -1190,11 +1174,9 @@ following fields:
       to update its data set to reflect the current state of the
       replica set.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
    
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncOplogEnd 
 
-      .. versionadded:: 3.4
 
       The end timestamp of the oplog application stage of the
       :ref:`initial sync <replica-set-initial-sync>` where the
@@ -1205,7 +1187,6 @@ following fields:
       to update its data set to reflect the current state of the
       replica set.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.syncSourceUnreachableSince
 
@@ -1213,8 +1194,6 @@ following fields:
 
       Only present if the if sync source is unavailable during the
       current initial sync.
-
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
       .. versionadded:: 4.4
 
@@ -1225,8 +1204,6 @@ following fields:
       Only present if the if sync source is unavailable during the
       current initial sync.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
-
       .. versionadded:: 4.4
 
    .. data:: replSetGetStatus.initialSyncStatus.totalTimeUnreachableMillis
@@ -1234,31 +1211,20 @@ following fields:
       The total time in milliseconds that the member has been
       unavailable during the current initial sync.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
-
       .. versionadded:: 4.4
 
    .. data:: replSetGetStatus.initialSyncStatus.databases
 
-      .. versionadded:: 3.4
-
       Detail on the databases cloned during :ref:`initial sync
       <replica-set-initial-sync>`.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
-
    .. data:: replSetGetStatus.initialSyncStatus.databases.databasesCloned
 
-      .. versionadded:: 3.4
 
       Number of databases cloned during :ref:`initial sync
       <replica-set-initial-sync>`.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
-
    .. data:: replSetGetStatus.initialSyncStatus.databases.<dbname>
-
-      .. versionadded:: 3.4
 
       For each database, a document that returns information regarding
       the progress of the cloning of that database.
@@ -1282,8 +1248,6 @@ following fields:
                "receivedBatches" : <number of batches of documents received to date>  // Added in 4.2
             }
          }
-
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
 
 .. data:: replSetGetStatus.members
