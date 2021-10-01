@@ -1060,7 +1060,6 @@ following fields:
       <replica-set-initial-sync>` failed and had to restart on this
       member.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.maxFailedInitialSyncAttempts
 
@@ -1070,7 +1069,6 @@ following fields:
       <replica-set-initial-sync>` can restart on this member before
       the member shuts down.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncStart
 
@@ -1079,7 +1077,6 @@ following fields:
       The start timestamp of the :ref:`initial sync
       <replica-set-initial-sync>` for this member.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncEnd
 
@@ -1087,8 +1084,6 @@ following fields:
 
       The end timestamp of the :ref:`initial sync
       <replica-set-initial-sync>` for this member.
-
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncElapsedMillis
 
@@ -1098,7 +1093,6 @@ following fields:
       :data:`~replSetGetStatus.initialSyncStatus.initialSyncStart` and
       :data:`~replSetGetStatus.initialSyncStatus.initialSyncEnd`.
 
-      .. include:: /includes/fact-rs-status-init-sync-availability.rst
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncAttempts
 
