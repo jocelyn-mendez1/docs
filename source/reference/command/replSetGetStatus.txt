@@ -669,8 +669,6 @@ following fields:
 
 .. data:: replSetGetStatus.term
 
-   .. versionadded:: 3.2
-
    The election count for the replica set, as known to this replica set
    member. The :data:`~replSetGetStatus.term` is used by the
    distributed consensus algorithm to ensure correctness.
@@ -683,8 +681,6 @@ following fields:
 
 .. data:: replSetGetStatus.syncSourceHost
 
-   .. versionadded:: 4.0, 3.6.6, 3.4.16
-
    The :data:`~replSetGetStatus.syncSourceHost` field holds the
    hostname of the member from which this instance syncs.
 
@@ -693,8 +689,6 @@ following fields:
    the :data:`~replSetGetStatus.syncSourceId` ``-1``.
 
 .. data:: replSetGetStatus.syncSourceId
-
-   .. versionadded:: 4.0, 3.6.6, 3.4.16
 
    The :data:`~replSetGetStatus.syncSourceId` field holds the
    :data:`replSetGetStatus.members[n]._id` of the member from which
@@ -706,20 +700,14 @@ following fields:
 
 .. data:: replSetGetStatus.heartbeatIntervalMillis
 
-   .. versionadded:: 3.2
-
    The frequency in milliseconds of the heartbeats.
 
 .. data:: replSetGetStatus.majorityVoteCount
-
-   .. versionadded:: 4.2.1
 
    The number that corresponds to the majority votes needed to elect a
    new primary in an election.
 
 .. data:: replSetGetStatus.writeMajorityCount
-
-   .. versionadded:: 4.2.1
 
    The number of data-bearing voting members (i.e. not arbiters) needed
    to fulfill write concern :writeconcern:`"majority"`. Writes can only
@@ -743,8 +731,6 @@ following fields:
    1 <members[n].votes>`; that is, the count does not include arbiters.
 
 .. data:: replSetGetStatus.optimes
-
-   .. versionadded:: 3.4
 
    The ``optimes`` field holds a document that contains :term:`optimes
    <optime>` used to inspect replication progress. Starting in MongoDB
@@ -772,8 +758,6 @@ following fields:
       members are not on MongoDB 4.2 or greater since the
       :data:`~replSetGetStatus.optimes.lastCommittedWallTime`
       requires communication with other members of the deployment.
-
-      .. versionadded:: 4.2
       
    .. data:: replSetGetStatus.optimes.readConcernMajorityOpTime
 
@@ -798,8 +782,6 @@ following fields:
       :data:`~replSetGetStatus.optimes.readConcernMajorityWallTime`
       requires communication with other members of the deployment.
 
-      .. versionadded:: 4.2
-
    .. data:: replSetGetStatus.optimes.appliedOpTime
 
       Information, from the viewpoint of this member, regarding the
@@ -810,8 +792,6 @@ following fields:
 
       The ISODate-formatted date string corresponding to
       :data:`~replSetGetStatus.optimes.appliedOpTime`.
-
-      .. versionadded:: 4.2
 
    .. data:: replSetGetStatus.optimes.durableOpTime
 
@@ -824,11 +804,7 @@ following fields:
       The ISODate-formatted date string corresponding to
       :data:`~replSetGetStatus.optimes.durableOpTime`.
 
-      .. versionadded:: 4.2
-
 .. data:: replSetGetStatus.lastStableCheckpointTimestamp
-
-   .. deprecated:: 4.2
 
    Available for the :ref:`storage-wiredtiger`.
 
@@ -840,17 +816,11 @@ following fields:
 
    A ``null`` value indicates that no stable checkpoint exists.
 
-   .. versionadded:: 4.0
-
 .. data:: replSetGetStatus.lastStableRecoveryTimestamp
-
-   .. versionadded:: 4.2
 
    *For internal use only*
 
 .. data:: replSetGetStatus.electionCandidateMetrics
-
-   .. versionadded:: 4.2.1
 
    Metrics related to the election of the current primary.
    :data:`~replSetGetStatus.electionCandidateMetrics` is only available
@@ -859,28 +829,18 @@ following fields:
 
    .. data:: replSetGetStatus.electionCandidateMetrics.lastElectionReason
 
-      .. versionadded:: 4.2.1
-
       Reason the member called the election.
 
    .. data:: replSetGetStatus.electionCandidateMetrics.lastElectionDate
-
-      .. versionadded:: 4.2.1
 
       The date and time the member called the election.
 
    .. data:: replSetGetStatus.electionCandidateMetrics.electionTerm
 
-      .. versionchanged:: 4.2.2
-         
-         In v4.2.1, ``electionTerm`` was named ``electionTerm``.
-
       The member's election count (i.e. :data:`~replSetGetStatus.term`)
       at the time it called for the new election.
 
    .. data:: replSetGetStatus.electionCandidateMetrics.lastCommittedOpTimeAtElection
-
-      .. versionadded:: 4.2.1
 
       The most recent :data:`majority-committed optime
       <replSetGetStatus.optimes.lastCommittedOpTime>`, as seen by this
@@ -888,28 +848,20 @@ following fields:
 
    .. data:: replSetGetStatus.electionCandidateMetrics.lastSeenOpTimeAtElection
 
-      .. versionadded:: 4.2.1
-
       The member's most recent :data:`applied optime
       <replSetGetStatus.optimes.appliedOpTime>` at the time it called
       for the new election.
 
    .. data:: replSetGetStatus.electionCandidateMetrics.numVotesNeeded
 
-      .. versionadded:: 4.2.1
-
       The number of votes needed to win the election.
 
    .. data:: replSetGetStatus.electionCandidateMetrics.priorityAtElection
-
-      .. versionadded:: 4.2.1
 
       The member's :rsconf:`priority <members[n].priority>` at the time
       it called the election.
       
    .. data:: replSetGetStatus.electionCandidateMetrics.electionTimeoutMillis
-
-      .. versionadded:: 4.2.1
 
       The replica set's configured
       :rsconf:`~settings.electionTimeoutMillis` setting at the time of
@@ -917,14 +869,10 @@ following fields:
 
    .. data:: replSetGetStatus.electionCandidateMetrics.priorPrimaryMemberId
 
-      .. versionadded:: 4.2.1
-
       The :rsconf:`members[n]._id` of the previous primary. If
       there is no previous primary, then the field is not present.
 
    .. data:: replSetGetStatus.electionCandidateMetrics.targetCatchupOpTime
-
-      .. versionadded:: 4.2.1
 
       The newly-elected primary's target opTime for its catchup
       process. Only when the newly-elected primary reaches the target
@@ -933,22 +881,16 @@ following fields:
 
    .. data:: replSetGetStatus.electionCandidateMetrics.numCatchUpOps
 
-      .. versionadded:: 4.2.1
-
       The number of operations applied by the newly-elected primary as
       it successfully concludes its catchup process.
 
    .. data:: replSetGetStatus.electionCandidateMetrics.newTermStartDate
-
-      .. versionadded:: 4.2.1
 
       The date and time at which the member's term as the primary
       started (i.e. the date and time at which a ``new term`` entry was
       written to the oplog).
 
    .. data:: replSetGetStatus.electionCandidateMetrics.wMajorityWriteAvailabilityDate
-
-      .. versionadded:: 4.2.1
 
       The date and time at which the write concern
       :writeconcern:`"majority"` became available after the election
@@ -960,14 +902,10 @@ following fields:
    Metrics related to the latest election in which the member
    participated.
 
-   .. versionadded:: 4.2.2
-
    .. data:: replSetGetStatus.electionParticipantMetrics.votedForCandidate
 
       A boolean which indicates whether the member voted for the
       candidate calling the election.
-
-      .. versionadded:: 4.2.2
 
    .. data:: replSetGetStatus.electionParticipantMetrics.electionTerm
 
@@ -975,27 +913,19 @@ following fields:
       term identifies the election associated with the participant
       metrics.
 
-      .. versionadded:: 4.2.2
-
    .. data:: replSetGetStatus.electionParticipantMetrics.lastVoteDate
 
       An :term:`ISODate` formatted date string that reflects when the
       participant voted.
 
-      .. versionadded:: 4.2.2
-
    .. data:: replSetGetStatus.electionParticipantMetrics.electionCandidateMemberId
 
       The :rsconf:`members[n]._id` of the candidate calling the election.
-
-      .. versionadded:: 4.2.2
 
    .. data:: replSetGetStatus.electionParticipantMetrics.voteReason
 
       The reason for the vote if the member did not vote for the candidate.
       If the member voted for the candidate, the value is an empty string.
-
-      .. versionadded:: 4.2.2
 
    .. data:: replSetGetStatus.electionParticipantMetrics.lastAppliedOpTimeAtElection
 
@@ -1012,13 +942,9 @@ following fields:
       The optime value is a document that contains the :ref:`Timestamp
       <document-bson-type-timestamp>` (``ts``) and the term (``t``).
 
-      .. versionadded:: 4.2.2
-
    .. data:: replSetGetStatus.electionParticipantMetrics.priorityAtElection
 
       The member's :rsconf:`~members[n].priority` at the time of the election.
-
-      .. versionadded:: 4.2.2
 
    .. data:: replSetGetStatus.electionParticipantMetrics.newTermStartDate
 
@@ -1032,16 +958,12 @@ following fields:
       :data:`replSetGetStatus.electionCandidateMetrics.newTermStartDate`
       instead.
 
-      .. versionadded:: 4.2.2
-
    .. data:: replSetGetStatus.electionParticipantMetrics.newTermAppliedDate
 
       The date and time at which this secondary applied the ``new
       term`` entry.
 
       The field is available for secondary members only.
-
-      .. versionadded:: 4.2.2
 
 .. data:: replSetGetStatus.initialSyncStatus
 
@@ -1081,8 +1003,6 @@ following fields:
       <replica-set-initial-sync>` for this member.
 
    .. data:: replSetGetStatus.initialSyncStatus.initialSyncElapsedMillis
-
-      .. versionadded:: 3.4
 
       The number of milliseconds between
       :data:`~replSetGetStatus.initialSyncStatus.initialSyncStart` and
@@ -1310,8 +1230,6 @@ following fields:
       Information regarding the last operation from the operation log that
       this member has applied.
 
-      .. versionchanged:: 3.2
-
       ``optime`` returns a document that contains:
 
       - ``ts``, the :ref:`Timestamp <document-bson-type-timestamp>` of
@@ -1322,8 +1240,6 @@ following fields:
         applied operation was originally generated on the primary.
 
    .. data:: replSetGetStatus.members[n].optimeDurable
-
-      .. versionadded:: 3.4
 
       Information regarding the last operation from the operation log
       that this member has applied to its journal.
@@ -1347,8 +1263,6 @@ following fields:
       ``members.optimeDate`` between all of the members of the set.
 
    .. data:: replSetGetStatus.members[n].optimeDurableDate
-
-      .. versionadded:: 3.4
 
       An :term:`ISODate` formatted date string that reflects the last
       entry from the :term:`oplog` that this member applied to its
@@ -1416,8 +1330,6 @@ following fields:
 
    .. data:: replSetGetStatus.members[n].syncSourceHost
 
-      .. versionadded:: 4.0, 3.6.6, 3.4.16
-
       The :data:`~replSetGetStatus.members[n].syncSourceHost` field
       holds the hostname of the member from which this instance syncs.
 
@@ -1427,8 +1339,6 @@ following fields:
       ``-1``.
 
    .. data:: replSetGetStatus.members[n].syncSourceId
-
-      .. versionadded:: 4.0, 3.6.6, 3.4.16
 
       The :data:`~replSetGetStatus.members[n].syncSourceId` field holds
       the :data:`replSetGetStatus.members[n]._id` value of the
