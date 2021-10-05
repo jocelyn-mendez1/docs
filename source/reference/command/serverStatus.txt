@@ -1834,7 +1834,8 @@ opWriteConcernCounters
       * - ``"none"``
 
         - Number of insert operations that did not specify ``w`` value.
-          These operations use the default ``w`` value of ``1``.
+          These operations use the default ``w`` value of 
+          :ref:``"majority" <wc-default-behavior>``.
 
    The sum of the :serverstatus:`opWriteConcernCounters.insert` equals
    :serverstatus:`opcounters.insert`.
@@ -1888,12 +1889,13 @@ opWriteConcernCounters
 
         - Number of update operations that specified
           :writeconcern:`w: \<tag\> <\<custom write concern name\>>`.
-          The counts are grouped by the specific ``<tag>``.
+          The counts are grouped by the specific ``<tag>``. 
 
       * - ``"none"``
 
         - Number of update operations that did not specify ``w`` value.
-          These operations use the default ``w`` value of ``1``.
+          These operations use the default ``w`` value of 
+          :writeconcern:`"majority" <wc-default-behavior>`.
 
    The sum of the :serverstatus:`opWriteConcernCounters.update` equals
    :serverstatus:`opcounters.update`.
@@ -1952,7 +1954,8 @@ opWriteConcernCounters
       * - ``"none"``
 
         - Number of delete operations that did not specify ``w`` value.
-          These operations use the default ``w`` value of ``1``.
+          These operations use the default ``w`` value of 
+          :writeconcern:`"majority" <wc-default-behavior>`.
 
    The sum of the :serverstatus:`opWriteConcernCounters.delete` equals
    :serverstatus:`opcounters.delete`.
