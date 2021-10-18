@@ -361,11 +361,14 @@ Replica Set Configuration Fields
       continue to call elections until the highest priority available
       member becomes primary.
 
-      Members with :rsconf:`~members[n].priority` of ``0`` can 
-      acknowledge write operations issued with :ref:`write-concern`. 
-      For write operations issued with :writeconcern:`"majority"` write 
-      concern, the member must also be a voting member (i.e. 
-      :rsconf:`~members[n].votes` is greater than ``0``).
+      Members with :rsconf:`~members[n].priority` of ``0``: 
+      
+      - Can acknowledge write operations issued with a :ref:`write-concern`, except 
+        for operations issued with the :writeconcern:`"majority"` write concern. 
+      
+      - Are not voting members (specifically :rsconf:`~members[n].votes` is greater
+        than ``0``) therefore they cannot use the majority write concern as they 
+        must be voting members. 
 
       .. seealso::
 
