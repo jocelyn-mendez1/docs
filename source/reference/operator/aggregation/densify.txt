@@ -1,0 +1,189 @@
+======================
+$densify (aggregation)
+======================
+
+.. default-domain:: mongodb
+
+.. contents:: On this page
+   :local:
+   :backlinks: none
+   :depth: 1
+   :class: singlecol
+
+Definition
+----------
+
+.. pipeline:: $densify
+
+   .. versionadded:: 5.1
+   
+   Creates new documents in a sequence of documents where values in a
+   specified field are missing.
+
+   You can use :pipeline:`$densify` to fill gaps in time series data. By
+   ensuring that your data covers regular time intervals, you can
+   more easily analyze changes over time.
+
+Syntax
+------
+
+The :pipeline:`$densify` stage has this syntax:
+
+.. code-block:: javascript
+
+   {
+      $densify: {
+         field: <fieldName>,
+         partitionByFields: [ <field 1>, <field 2> ... <field n> ],
+         range: {
+            step: <number>,
+            unit: <time unit>,
+            bounds: < "full" || "partition" > || [ < lower bound >, < upper bound > ]
+         }
+      }
+   }
+
+The :pipeline:`$densify` stage takes a document with these fields:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 70
+
+   * - Field
+     - Necessity
+     - Description
+
+   * - :ref:`field <densify-field>`
+
+     - Required
+     
+     - .. _densify-field:
+     
+       The field to densify. The values of the specified
+       ``field`` must either be all numeric values or dates.
+       
+       Documents that do not contain the specified ``field`` continue
+       to the next pipeline stage unmodified.
+
+       For documents that do contain the specified ``field``,
+       :pipeline:`$densify` errors if: 
+
+       - Any document in the collection has a ``field`` value:
+       
+         - Of type date and :ref:`unit <densify-unit>` is not specified.
+
+         - Of type integer and :ref:`unit <densify-unit>` is specified.
+
+         - That is not of date or numeric.
+
+       - The ``field`` name begins with ``$``. You must rename the
+         field if you want to densify it. To rename fields,
+         use :pipeline:`$project`.
+
+   * - :ref:`partitionByFields <densify-partition-by-fields>`
+
+     - Optional
+
+     - .. _densify-partition-by-fields:
+
+       The set of fields to act as the compound key to group
+       the documents. In the :pipeline:`$densify` stage, each group of
+       documents is known as a *partition*.
+
+       If you omit this field, :pipeline:`$densify` uses one partition
+       for the entire collection.
+
+       :pipeline:`$densify` errors if any field in the
+       ``partitionByFields`` array:
+       
+       - Evaluates to an array.
+       - Begins with ``$``.
+
+   * - :ref:`range <densify-range>`
+
+     - Required
+
+     - .. _densify-range:
+
+       An object that specifies how the data is densified.
+
+   * - :ref:`range.bounds <densify-bounds>`
+
+     - Required
+
+     - .. _densify-bounds:
+
+       You can specify ``range.bounds`` as either:
+
+       - An array: [ ``< lower bound >``, ``< upper bound >`` ],
+       - A string: either ``"full"`` or ``"partition"``.
+
+       If ``bounds`` is an array:
+       
+       - The data type for the bounds must correspond to the data type
+         in the :ref:`field <densify-field>` being densified.
+       
+       - The lower bound indicates the start value for the added
+         documents, irrespective of documents already in the collection.
+
+       - The lower bound is inclusive.
+
+       - The upper bound is exclusive.
+
+       - :pipeline:`$densify` does not filter out documents with
+         :ref:`field <densify-field>` values outside of the specified
+         bounds.
+
+       If ``bounds`` is ``"full"``:
+
+       - :pipeline:`$densify` adds documents spanning the full range of
+         values of the ``field`` being densified.
+
+       If ``bounds`` is ``"partition"``:
+
+       - :pipeline:`$densify` adds documents based on each partition,
+         similar to if you had ran a ``full`` range densification on
+         each partition individually.
+
+   * - :ref:`range.step <densify-step>`
+
+     - Required
+
+     - .. _densify-step:
+
+       The amount to increment the :ref:`field <densify-field>` value
+       in each document. :pipeline:`$densify` creates a new document for
+       each ``step`` between the already existing documents.
+
+       If :ref:`range.unit <densify-unit>` is specified, ``step``
+       must be an integer. Otherwise, ``step`` can be any numeric
+       value.
+
+   * - :ref:`range.unit <densify-unit>`
+
+     - Required if :ref:`field <densify-field>` is a date.
+
+     - .. _densify-unit:
+
+       The unit to apply to the :ref:`step <densify-step>` field when
+       incrementing date values in :ref:`field <densify-field>`.
+
+       You can specify one of the following values for ``unit``
+       as a string:
+
+       - ``millisecond``
+       - ``second``
+       - ``minute``
+       - ``hour``
+       - ``week``
+       - ``month``
+       - ``quarter``
+       - ``year``
+
+Behavior
+--------
+
+Examples
+--------
+
+

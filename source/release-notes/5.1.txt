@@ -18,17 +18,21 @@ General
 Aggregation
 -----------
 
-.. _5.1-rel-notes-new-agg-operators:
+New Aggregation Stages
+~~~~~~~~~~~~~~~~~~~~~~
 
-$geoNear accepts ``let-bound`` variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MongoDB 5.1 introduces the following aggregation stages:
 
-.. include:: /includes/fact-5.1-geonear-let-allowed.rst
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
 
-$lookup and $graphLookup with sharded collections
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   * - Stage
+     - Description
 
-.. include:: /includes/5.1-fact-sharded-lookup-graphlookup.rst
+   * - :pipeline:`$densify`
+     - Creates new documents in a sequence of documents where values in
+       a specified field are missing.
 
 New Aggregation Operators
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,6 +51,18 @@ MongoDB 5.1 introduces the following aggregation operators:
 
    * - :expression:`$tsIncrement`
      - .. include:: /includes/tsIncrement-introduction.rst
+
+.. _5.1-rel-notes-new-agg-operators:
+
+$geoNear accepts ``let-bound`` variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /includes/fact-5.1-geonear-let-allowed.rst
+
+$lookup and $graphLookup with sharded collections
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /includes/5.1-fact-sharded-lookup-graphlookup.rst
 
 
 General Aggregation Improvements

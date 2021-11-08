@@ -42,6 +42,10 @@ content: |
 
           Distinct from the :group:`$count` aggregation accumulator.
 
+      * - :pipeline:`$densify`
+
+        - .. include:: /includes/fact-densify-description.rst
+
       * - :pipeline:`$facet`
 
         - Processes multiple :ref:`aggregation pipelines
