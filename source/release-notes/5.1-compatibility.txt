@@ -85,6 +85,13 @@ Starting in MongoDB 5.1 (and 5.0.4 and 4.4.10), the :query:`$mod`
 operator returns an error if the ``divisor`` or ``remainder`` values
 evaluate to certain values. See :ref:`$mod behavior <mod-behavior>`.
 
+Explain ``executionStats`` Advanced Stage is Removed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Starting in MongoDB 5.1, the :ref:`<executionStats>` stage 
+``executionStages.advanced`` is removed because ``executionStats.nReturned`` 
+returns the same information.
+
 Deprecations
 ------------
 

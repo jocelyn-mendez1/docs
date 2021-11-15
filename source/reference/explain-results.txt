@@ -484,7 +484,6 @@ execution of the winning plan. In order to include
                      "opens" : <int>, // Starting in MongoDB 5.1
                      "closes" : <int>, // Starting in MongoDB 5.1
                      "works" : <int>,
-                     "advanced" : <int>,
                      "needTime" : <int>,
                      "needYield" : <int>,
                      "saveState" : <int>,
@@ -702,24 +701,14 @@ execution of the winning plan. In order to include
 
          .. include:: /includes/executionStages-omitted-field.rst
 
-      .. data:: explain.executionStats.executionStages.advanced
-
-         The number of intermediate results returned, or *advanced*, by
-         this stage to its parent stage.
-
-         .. include:: /includes/executionStages-omitted-field.rst
-
       .. data:: explain.executionStats.executionStages.needTime
 
-         The number of work cycles that did not advance an intermediate
-         result to its parent stage (see
-         :data:`explain.executionStats.executionStages.advanced`). For
-         instance, an index scan stage may spend a work cycle seeking to a
-         new position in the index as opposed to returning an index
-         key; this work cycle would count towards
-         :data:`explain.executionStats.executionStages.needTime` rather
-         than :data:`explain.executionStats.executionStages.advanced`.
-
+         The number of work cycles that did not advance an intermediate result
+         to its parent stage. For instance, an index scan stage may spend a 
+         work cycle seeking to a new position in the index as opposed to 
+         returning an index key; this work cycle would count towards
+         :data:`explain.executionStats.executionStages.needTime`.
+         
          .. include:: /includes/executionStages-omitted-field.rst
 
       .. data:: explain.executionStats.executionStages.needYield
